@@ -1,0 +1,22 @@
+# Logfiles
+pure_gauge/raw_data/logs/
+
+#Revesibility test
+pure_gauge/raw_data/reversibility/
+
+# Auswertungsdaten
+*.csv
+
+# Checkpoints
+pure_gauge/raw_data/checkpoints/
+
+# Build-Artefakte
+pure_gauge/build/
+
+# Editor-Dateien
+*~
+*.swp
+
+# Python Cache
+__pycache__/
+*.pyc
