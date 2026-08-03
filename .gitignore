@@ -4,7 +4,7 @@ pure_gauge/raw_data/logs/
 #Revesibility test
 pure_gauge/raw_data/reversibility/
 
-# Auswertungsdaten
+# Auswertungsdaten TODO ggf. exakte Ordner angeben, evtl. speichere ich nachher einzelne csv dateien fur plots o.a.
 *.csv
 
 # Checkpoints
@@ -20,3 +20,7 @@ pure_gauge/build/
 # Python Cache
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
+
+#Python. environement
+.venv/
