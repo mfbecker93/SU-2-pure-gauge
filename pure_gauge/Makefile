@@ -1,27 +1,30 @@
-CXX = mpicxx
+# TODO: for HPC replace with mpicxx
+CXX = clang++
 
-GRID = $(HOME)/local/grid-su2
+GRID = $(HOME)/PhD/Grid/grid_install_SU2
 
 TARGET = build/pure_gauge
 
 SRC = src/main.cc
 
-CXXFLAGS = $(shell $(GRID)/bin/grid-config --cxxflags) \
-           -I/usr/include/hdf5/serial
+CXXFLAGS = -std=c++17 \
+           $(shell $(GRID)/bin/grid-config --cxxflags) \
+           -I/opt/homebrew/opt/hdf5/include \
+           -I/opt/homebrew/opt/openssl@3/include\
+		   -I/opt/homebrew/opt/fftw/include 
+
 
 LDFLAGS = -L$(GRID)/lib \
-          -L$(HOME)/local/lib \
-          -L/usr/lib/x86_64-linux-gnu/hdf5/serial \
-          -L/usr/lib/llvm-18/lib
+		  -L$(HOME)/PhD/Grid/c-lime/lib \
+          -L/opt/homebrew/opt/hdf5/lib \
+          -L/opt/homebrew/opt/openssl@3/lib\
+		  -L/opt/homebrew/opt/fftw/lib
 
-LIBS = $(shell $(GRID)/bin/grid-config --libs) \
-       -lunwind-x86_64 \
-       -lunwind
-
+LIBS = $(shell $(GRID)/bin/grid-config --libs)
 
 all:
+	mkdir -p build
 	$(CXX) $(SRC) $(CXXFLAGS) $(LDFLAGS) $(LIBS) -o $(TARGET)
-
 
 clean:
 	rm -f $(TARGET)

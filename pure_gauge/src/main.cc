@@ -91,14 +91,24 @@ int main(int argc, char **argv)
           << "_trajL" << params.trajL
           << "_traj" << trajectories
           << "_ckpt" << params.checkpoint_interval;
-    
-  std::string outdir = "raw_data/" + dirname.str(); 
-  std::filesystem::create_directories(outdir); // erzeuge ordner
+      
+  std::string outdir = "raw_data/" + dirname.str();
+  std::string outdir_cfg = outdir + "/cfg";
+  std::string outdir_smr = outdir + "/smr";
+  std::string outdir_rng = outdir + "/rng";
+
+  std::filesystem::create_directories(outdir_cfg); // erzeuge ordner
+  std::filesystem::create_directories(outdir_smr); // erzeuge ordner
+  std::filesystem::create_directories(outdir_rng); // erzeuge ordner
 
   // Checkpointer definition
   CheckpointerParameters CPparams;  
-  CPparams.config_prefix = outdir + "/ckpoint_lat";
-  CPparams.rng_prefix = outdir + "/ckpoint_rng";
+  CPparams.config_prefix = outdir_cfg + "/ckpoint_lat";
+  CPparams.smeared_prefix = outdir_smr + "/ckpoint_smr";
+  CPparams.rng_prefix = outdir_rng + "/ckpoint_rng";
+
+  CPparams.saveSmeared = false;
+
   CPparams.saveInterval = params.checkpoint_interval;
   CPparams.format = "IEEE64BIG";
   

@@ -1,6 +1,6 @@
 # README
 ## 1. General Information
-This repository contains the code for a SU(2) pure gauge theory on the lattice realised with Grid v0.7.0. Grid itself is not included in this repository. For Grid related information refer to section 2. From the Grid log files (not inlcuded in this repo) observables have been extracted und analysed. The details of the analysis can be found in section 3 (tbd).
+This repository contains the code for a SU(2) pure gauge theory on the lattice realised with Grid v0.7.0. Grid itself is not included in this repository. For Grid related information refer to section 2. From the Grid log files (not inlcuded in this repo) observables have been extracted und analysed. The details of the analysis can be found in section 3 (TODO).
 
 ## 2. Grid
 
@@ -87,4 +87,4 @@ Required software:
 
 ## 3. Analysis
 
-tbd
+TODO
