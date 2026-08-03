@@ -1,2 +1,2 @@
 # Citation
-Dieses File muss durch eine CITATION.cff Datei ersetzt werden.
+TODO: Dieses File muss durch eine CITATION.cff Datei ersetzt werden.
