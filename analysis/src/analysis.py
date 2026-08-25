@@ -480,6 +480,85 @@ def jackknife_autocorr_scan(
         results,
         ignore_index=True,
     )
+# ============================================================
+# Bootstrap autocorrelation
+# ============================================================
+def bootstrap_autocorr(df, value, t, block_size, n_bootstrap):
+
+    N = len(df)
+
+    # --------------------------------------------------
+    # 1. ORIGINAL autocorrelation
+    #    Uses ALL of the original HMC data
+    # --------------------------------------------------
+    rho_original = autocorr(df, value, t)
+
+    # --------------------------------------------------
+    # 2. Create complete blocks for the bootstrap
+    # --------------------------------------------------
+    n_blocks = N // block_size
+
+    if n_blocks < 2:
+        raise ValueError("block_size is too large.")
+
+    N_used = n_blocks * block_size
+
+    df_blocks = df.iloc[:N_used].copy()
+
+    blocks = [
+        df_blocks.iloc[
+            i * block_size:(i + 1) * block_size
+        ].copy()
+        for i in range(n_blocks)
+    ]
+
+    # --------------------------------------------------
+    # 3. Bootstrap
+    # --------------------------------------------------
+    bootstrap_rhos = []
+
+    for _ in range(n_bootstrap):
+
+        indices = np.random.randint(
+            0,
+            n_blocks,
+            size=n_blocks
+        )
+
+        df_bootstrap = pd.concat(
+            [blocks[i] for i in indices],
+            ignore_index=True
+        )
+
+        rho_bootstrap = autocorr(
+            df_bootstrap,
+            value,
+            t
+        )
+
+        bootstrap_rhos.append(
+            rho_bootstrap["autocorr"].to_numpy()
+        )
+
+    # --------------------------------------------------
+    # 4. Bootstrap error
+    # --------------------------------------------------
+    bootstrap_rhos = np.asarray(bootstrap_rhos)
+
+    delta_rho = np.std(
+        bootstrap_rhos,
+        axis=0,
+        ddof=1
+    )
+
+    # --------------------------------------------------
+    # 5. Attach error to ORIGINAL rho
+    # --------------------------------------------------
+    result = rho_original.copy()
+
+    result["delta_autocorr"] = delta_rho
+
+    return result
 
 
 # ============================================================
