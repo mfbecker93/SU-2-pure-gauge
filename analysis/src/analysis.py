@@ -721,7 +721,7 @@ def integrated_autocorr_time_scan(
 
 def tau_exp_from_tau_int(
     tau_int: np.ndarray,
-    S: float = 1,
+    S: float = 1, 
 ) -> np.ndarray:
     """
     Convert integrated autocorrelation time to
@@ -749,7 +749,48 @@ def tau_exp_from_tau_int(
     )
 
     return tau_exp
+# ============================================================
+# WINDOW FUNCTION FROM A RAMOS JULIA CODE
+# ============================================================
 
+def wopt_ulli(
+    gamma: np.ndarray,
+    N: int,
+    S: float = 4.0,
+    min_W: int = 1,
+) -> int:
+    """
+    Direct Python implementation of ADerrors.wopt_ulli().
+    """
+
+    tiw = 0.5
+
+    for i in range(1, len(gamma)):
+
+        tiw += gamma[i] / gamma[0]
+
+        if tiw <= 0.5:
+            return max(min_W, i)
+
+        tau_exp = (
+            S
+            / np.log(
+                (2.0 * tiw + 1.0)
+                / (2.0 * tiw - 1.0)
+            )
+        )
+
+        W = i
+
+        gw = (
+            np.exp(-W / tau_exp)
+            - tau_exp / np.sqrt(W * N)
+        )
+
+        if gw < 0.0:
+            return max(min_W, i)
+
+    raise RuntimeError("No optimal window found.")
 
 # ============================================================
 # WINDOW FUNCTION
@@ -765,7 +806,7 @@ def window_function(
 
         g(W) =
             exp(-W / tau_exp)
-            - tau_exp / (sqrt(W) * N)
+            - tau_exp / (sqrt(W * N))
 
     Returns np.nan for invalid entries.
     """
@@ -783,7 +824,7 @@ def window_function(
 
     g[valid] = (
         np.exp(-W[valid] / tau_exp[valid])
-        - tau_exp[valid] / (np.sqrt(W[valid]) * N)
+        - tau_exp[valid] / (np.sqrt(W[valid] * N))
     )
 
     return g
@@ -792,53 +833,103 @@ def window_function(
 # ============================================================
 # OPTIMAL WINDOW
 # ============================================================
-
 def find_optimal_W(
     df: pd.DataFrame,
     value: str,
     Wmax: int,
-    S: float = 1,
+    S: float = 4.0, #same value as in ADerrors.jl
 ) -> dict:
     """
-    Find the optimal window W_opt via the Wolff criterion:
-    the first W where g(W) < 0.
+    Reproduce the relevant ADerrors window-selection procedure.
 
-    Falls back to Wmax if no such W is found.
+    1. Compute raw gamma.
+    2. Determine the window used for the bias correction.
+    3. Apply the ADerrors bias correction.
+    4. Determine the final optimal window from the corrected gamma.
     """
 
-    # fix: compute N after dropna, consistent with integrated_autocorr_time
-    N = len(df[value].dropna())
+    data = (
+        df[value]
+        .dropna()
+        .to_numpy()
+    )
 
-    tau_df = integrated_autocorr_time(
+    N = len(data)
+
+    # --------------------------------------------------------
+    # Raw gamma
+    # --------------------------------------------------------
+
+    ac_df = autocorr(
         df,
         value,
         Wmax,
     )
 
-    tau_int = tau_df["tau_int"].to_numpy()
-    delta_tau = tau_df["delta_tau"].to_numpy()
+    rho_raw = ac_df["autocorr"].to_numpy()
 
-    tau_exp = tau_exp_from_tau_int(tau_int, S)
+    gamma0 = np.var(data, ddof=0)
 
-    W_arr = np.arange(1, Wmax + 1)                  # fix: construct W array
-    g = window_function(W_arr, tau_exp, N)           # fix: correct call
+    gamma_raw = gamma0 * rho_raw
 
-    negative = np.where(g < 0)[0]
+    # --------------------------------------------------------
+    # Bias window
+    # --------------------------------------------------------
 
-    if len(negative) == 0:
-        idx = Wmax - 1
-    else:
-        idx = int(negative[0])
+    W_bias = wopt_ulli(
+        gamma_raw,
+        N,
+        S,
+    )
 
-    W_opt = idx + 1
+    # --------------------------------------------------------
+    # ADerrors bias correction
+    # --------------------------------------------------------
+
+    dbias = (
+        gamma_raw[0]
+        + 2.0 * np.sum(
+            gamma_raw[1:W_bias + 1]
+        )
+    )
+
+    gamma_corrected = (
+        gamma_raw
+        + dbias / N
+    )
+
+    # --------------------------------------------------------
+    # Final window
+    # --------------------------------------------------------
+
+    W_final = wopt_ulli(
+        gamma_corrected,
+        N,
+        S,
+    )
+
+    # --------------------------------------------------------
+    # tau_int at final window
+    # --------------------------------------------------------
+
+    rho_corrected = (
+        gamma_corrected
+        / gamma_corrected[0]
+    )
+
+    tau_int = (
+        0.5
+        + np.sum(
+            rho_corrected[1:W_final + 1]
+        )
+    )
 
     return {
-        "W": W_opt,
-        "tau_int": tau_int[idx],
-        "delta_tau": delta_tau[idx],
-        "tau_exp": tau_exp[idx],
+        "W_bias": W_bias,
+        "dbias": dbias,
+        "W": W_final,
+        "tau_int": tau_int,
     }
-
 
 # ============================================================
 # FINAL AUTOCORRELATION-CORRECTED STATISTICS

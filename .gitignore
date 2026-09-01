@@ -4,16 +4,17 @@ pure_gauge/raw_data/logs/
 #Revesibility test
 pure_gauge/raw_data/reversibility/
 
-# Auswertungsdaten TODO ggf. exakte Ordner angeben, evtl. speichere ich nachher einzelne csv dateien fur plots o.a.
+# Analysis data; TODO: potentially indicate specific files/folders
 *.csv
+*.dat
 
 # Checkpoints
 pure_gauge/raw_data/checkpoints/
 
-# Build-Artefakte
+# Build artefacts
 pure_gauge/build/
 
-# Editor-Dateien
+# Editor data
 *~
 *.swp
 
@@ -24,3 +25,7 @@ __pycache__/
 
 #Python. environement
 .venv/
+
+# Validation aderrors: exclude input and output data
+validation/aderrors/input/
+validation/aderrors/output/
