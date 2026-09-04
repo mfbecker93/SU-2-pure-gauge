@@ -12,7 +12,7 @@ from analysis import (
 
 ROOT = Path(__file__).resolve().parents[3]
 
-INPUT = ROOT / "validation" / "aderrors" / "input" / "plaquette_beta6.csv"
+INPUT = ROOT / "validation" / "aderrors" / "input" / "plaquette_beta2.csv"
 
 df = pd.read_csv(INPUT)
 
@@ -48,9 +48,10 @@ result = find_optimal_W(
 print(result)
 
 tau_int = result["tau_int"]
+gamma0_corrected = result["gamma_corrected"][0]
 
 sigma = np.sqrt(
-    2 * tau_int * gamma0 / N
+    2 * tau_int * gamma0_corrected / N
 )
 
 ac_df = autocorr(
@@ -64,9 +65,9 @@ print(ac_df)
 print("\n--- final result ---")
 
 print("tau_int =", tau_int)
-#print("delta_tau =", result["delta_tau"])
+print("delta_tau =", result["delta_tau"])
 print("W =", result["W"])
-#print("tau_exp =", result["tau_exp"])
+print("tau_exp =", result["tau_exp"])
 print("gamma0 =", gamma0)
 print("sigma =", sigma)
 
@@ -137,3 +138,29 @@ for t in range(10):
         f"raw={gamma[t]:.15e}",
         f"corrected={gamma_corrected[t]:.15e}",
     )    
+
+
+data = {
+    "Parameter": [
+        r"$\langle P \rangle$",
+        r"$\tau_{\mathrm{int}}$",
+        r"$\Delta\tau$",
+        r"$W$",
+        r"$\tau_{\mathrm{exp}}$",
+        r"$\gamma_0$",
+        r"$\sigma$"
+    ],
+    "Wert": [
+        mean,
+        tau_int,
+        result["delta_tau"],
+        result["W"],
+        result["tau_exp"],
+        gamma0,
+        sigma
+    ]
+}
+
+df = pd.DataFrame(data)
+
+print(df.to_latex(index=False, escape=False, float_format="%.10f"))    

@@ -923,12 +923,17 @@ def find_optimal_W(
             rho_corrected[1:W_final + 1]
         )
     )
+    tau_exp = S / np.log((2.0 * tau_int + 1.0) / (2.0 * tau_int - 1.0)) if tau_int > 0.5 else 1e-10
+    delta_tau = 2.0 * tau_int * np.sqrt(max(W_final + 0.5 - tau_int, 0.0) / N)  # eq. (42)/Wolff error-of-error, using converged W
 
     return {
         "W_bias": W_bias,
         "dbias": dbias,
         "W": W_final,
         "tau_int": tau_int,
+        "tau_exp": tau_exp,
+        "delta_tau": delta_tau,
+        "gamma_corrected": gamma_corrected,
     }
 
 # ============================================================
@@ -982,7 +987,7 @@ def autocorr_error(
         tau_int = result["tau_int"]
         x = group_df[value].to_numpy()
 
-        gamma0 = np.var(x, ddof=0)
+        gamma0 = result["gamma_corrected"][0]
 
         sem_autocorr = np.sqrt(
             2 * tau_int * gamma0 / N
