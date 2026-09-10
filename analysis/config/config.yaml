@@ -1,0 +1,10 @@
+# analysis/config/config.yaml
+log_dir: "/Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs"
+lattice: "8x8x8x8"
+mdsteps: 10
+trajL: 1.0
+betas: [2.0, 4.0, 6.0, 8.0, 10.0]
+trajectory_cut: 200
+Wmax: 100
+S: 4.0
+n_blocks: 10

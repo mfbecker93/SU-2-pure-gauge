@@ -15,6 +15,7 @@ dependencies = [
     "numpy>=2.5.1",
     "pandas>=3.0.5",
     "scipy>=1.18.0",
+    "snakemake>=9.26.1",
 ]
 
 [project.scripts]

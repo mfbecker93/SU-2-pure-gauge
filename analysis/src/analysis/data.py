@@ -336,6 +336,8 @@ def load_acceptance_data(log_dir):
 
 def load_single_log(logfile):
 
+    params = parse_log_name(logfile)
+
     df_plaq = parse_plaquette(logfile)
     df_dh = parse_dh(logfile)
     df_q = parse_topology(logfile)
@@ -343,49 +345,25 @@ def load_single_log(logfile):
 
     keys = ["trajectory"]
 
-    # gather H_after and dH
-    df_dh = df_dh[
-        keys + ["H_after", "dH"]
-    ]
-    # gather topologiacl charge Q
-    df_q = df_q[
-        keys + ["Q"]
-    ]
-    # gather acceptance rate
-    df_acc = df_acc[
-        keys + ["accepted"]
-    ]
+    df_dh = df_dh[keys + ["H_after", "dH"]]
+    df_q = df_q[keys + ["Q"]]
+    df_acc = df_acc[keys + ["accepted"]]
 
-    # Plaquette as basis for merging
-    df = df_plaq.merge(
-        df_dh,
-        on=keys,
-        how="left",
-        validate="one_to_one"
-    )
+    df = df_plaq.merge(df_dh, on=keys, how="left", validate="one_to_one")
+    df = df.merge(df_q, on=keys, how="left", validate="one_to_one")
+    df = df.merge(df_acc, on=keys, how="left", validate="one_to_one")
 
-    df = df.merge(
-        df_q,
-        on=keys,
-        how="left",
-        validate="one_to_one"
-    )
-
-    df = df.merge(
-        df_acc,
-        on=keys,
-        how="left",
-        validate="one_to_one"
-    )
-
-    # add Metropolis weight
     df["exp_minus_dH"] = np.exp(-df["dH"])
 
-    return df
+    # restore simulation-parameter columns and file tag
+    for key, value in params.items():
+        df[key] = value
+    df["file"] = Path(logfile).name
 
+    return df
 #============================================================
 # Load data from all log files in a directory and merge into one DataFrame
-
+#============================================================
 
 def load_all_data(log_dir):
 
