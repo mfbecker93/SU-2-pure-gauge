@@ -275,7 +275,7 @@ def parse_acceptance(logfile):
     with open(logfile) as f:
         for line in f:
 
-            # tatsächliche Trajektoriennummer aus dem Log
+            # extract current trajectory from plaquette output
             m_traj = re.search(
                 r"Plaquette:\s+\[\s*(\d+)\s*\]",
                 line
@@ -284,7 +284,7 @@ def parse_acceptance(logfile):
             if m_traj:
                 current_trajectory = int(m_traj.group(1))
 
-            # Acceptance der aktuellen Trajektorie
+            # extract acceptance information for the current trajectory
             if "Metropolis_test -- ACCEPTED" in line:
                 data.append({
                     "trajectory": current_trajectory,
@@ -330,29 +330,33 @@ def load_acceptance_data(log_dir):
     )
 
 
-def load_all_data(log_dir):
+#============================================================
+# Load data from one log file and merge into one DataFrame
+#============================================================
 
-    df_plaq = load_plaquette_data(log_dir)
-    df_dh = load_dh_data(log_dir)
-    df_q = load_topology_data(log_dir)
-    df_acc = load_acceptance_data(log_dir)
+def load_single_log(logfile):
 
-    keys = ["file", "trajectory"]
+    df_plaq = parse_plaquette(logfile)
+    df_dh = parse_dh(logfile)
+    df_q = parse_topology(logfile)
+    df_acc = parse_acceptance(logfile)
 
-    # Nur Messgrößen aus den zusätzlichen DataFrames verwenden
+    keys = ["trajectory"]
+
+    # gather H_after and dH
     df_dh = df_dh[
         keys + ["H_after", "dH"]
     ]
-
+    # gather topologiacl charge Q
     df_q = df_q[
         keys + ["Q"]
     ]
-
+    # gather acceptance rate
     df_acc = df_acc[
         keys + ["accepted"]
     ]
 
-    # Plaquette als Basis
+    # Plaquette as basis for merging
     df = df_plaq.merge(
         df_dh,
         on=keys,
@@ -374,7 +378,21 @@ def load_all_data(log_dir):
         validate="one_to_one"
     )
 
-    # Metropolis weight
+    # add Metropolis weight
     df["exp_minus_dH"] = np.exp(-df["dH"])
+
+    return df
+
+#============================================================
+# Load data from all log files in a directory and merge into one DataFrame
+
+
+def load_all_data(log_dir):
+
+    logs = list(Path(log_dir).glob("*.log"))
+    dfs = [load_single_log(log) for log in logs]
+    if not dfs:
+        return pd.DataFrame()
+    df = pd.concat(dfs, ignore_index=True)
 
     return df
