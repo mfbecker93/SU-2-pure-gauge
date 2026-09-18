@@ -9,7 +9,7 @@ from matplotlib.lines import Line2D
 
 def savefig(fig, filename, dpi=300):
     """
-    Speichert eine Figure und schließt sie anschließend.
+    Save figure and close it.
     """
     fig.savefig(
         filename,
@@ -25,7 +25,7 @@ def savefig(fig, filename, dpi=300):
 
 def plot_plaquette_history(df, title=None, ax=None):
     """
-    Plaquette als Funktion der Trajektorie für alle beta-Werte.
+    Plaquette as function of trajectory for all beta values.
     """
 
     if ax is None:
@@ -66,7 +66,7 @@ def plot_plaquette_histogram(
     ax=None
 ):
     """
-    Histogramm der Plaquette-Verteilung für einen beta-Wert.
+    Histogram of the plaquette distribution for a given beta value.
     """
 
     if ax is None:
@@ -118,7 +118,7 @@ def plot_plaquette_average(
     ax=None
 ):
     """
-    Mittelwert der Plaquette als Funktion von beta.
+    Average of the plaquette as function of beta.
 
     df benötigt:
         beta
@@ -237,9 +237,9 @@ def plot_autocorr_scan(
     ax=None,
 ):
     """
-    Plot der Autokorrelationsfunktion für mehrere beta-Werte.
+    Plot of the autocorrelation function for multiple beta values.
 
-    Erwartete Spalten:
+    expected columns:
         beta
         lag
         autocorr
@@ -293,9 +293,9 @@ def plot_int_autocorr(
     color=None,
 ):
     """
-    Plot von tau_int(W) mit Wolff-Fehlerband.
+    Plot of tau_int(W) with Wolff error band.
 
-    Erwartete Spalten:
+    expected columns:
         W
         tau_int
         delta_tau
@@ -361,9 +361,9 @@ def plot_int_autocorr_scan(
     ax=None,
 ):
     """
-    Plot von tau_int(W) für mehrere beta-Werte.
+    Plot of tau_int(W) for multiple beta values.
 
-    Erwartete Spalten:
+    expected columns:
         beta
         W
         tau_int
@@ -425,7 +425,7 @@ def plot_acceptance(
     ax=None
 ):
     """
-    Acceptance Rate als Funktion von beta.
+    Acceptance Rate as function of beta.
     """
 
     if ax is None:
@@ -461,7 +461,7 @@ def plot_acceptance_vs_dH(
     ax=None
 ):
     """
-    Acceptance Rate gegen <Delta H>.
+    Acceptance Rate against <Delta H>.
     """
 
     if ax is None:
@@ -470,7 +470,7 @@ def plot_acceptance_vs_dH(
             layout="constrained"
         )
 
-    # Autokorrelations-korrigierter Fehler
+    # autocorrelation corrected error
     ax.errorbar(
             df["mean"],
             df["acceptance"],
@@ -480,7 +480,7 @@ def plot_acceptance_vs_dH(
             label="autocorrelation corrected"
         )
 
-    # Naiver Fehler
+    # naive error
     if compare_naive:
         ax.errorbar(
         df["mean"],
@@ -491,7 +491,7 @@ def plot_acceptance_vs_dH(
         label="naive"
     )
 
-    # beta beschriften
+    # beta labeling
     for _, row in df.iterrows():
 
         ax.annotate(
@@ -536,7 +536,7 @@ def plot_dH_history(
     ax=None
 ):
     """
-    Delta H als Funktion der Trajektorie für alle beta.
+    Delta H as function of trajectory for all beta values.
     """
 
     if ax is None:
@@ -585,13 +585,13 @@ def plot_dH_histogram(
     ax=None
 ):
     """
-    Histogramm der Delta-H-Verteilung.
+    Histogram of the Delta-H distribution.
 
-    Wenn beta angegeben wird:
-        nur dieser beta-Wert.
+    If beta is specified:
+        only this beta value.
 
-    Wenn beta=None:
-        alle beta-Werte.
+    If beta=None:
+        all beta values.
     """
 
     if ax is None:
@@ -656,7 +656,7 @@ def plot_exp_dH(
     ax=None
 ):
     """
-    <exp(-Delta H)> als Funktion von beta.
+    <exp(-Delta H)> as function of beta.
     """
 
     if ax is None:
@@ -708,7 +708,7 @@ def plot_average_with_error(
     ax=None
 ):
     """
-    Allgemeiner Plot für Mittelwerte mit Fehlerbalken.
+    General plot for mean values with error bars.
     """
 
     if ax is None:
@@ -716,7 +716,7 @@ def plot_average_with_error(
             figsize=(7, 5),
             layout="constrained"
         )
-        # Autokorrelations-korrigierter Fehler
+        # error corrected for autocorrelation
         ax.errorbar(
             df[x],
             df["mean"],
@@ -728,7 +728,7 @@ def plot_average_with_error(
     
 
 
-    # Naiver Fehler
+    # naive error
     if compare_naive:
         ax.errorbar(
         df[x],
@@ -852,7 +852,7 @@ def plot_integrator_comparison(
         )
 
     # --------------------------------------------------------
-    # Referenzwert
+    # Reference value
     # --------------------------------------------------------
 
     if reference is not None:
@@ -931,13 +931,13 @@ def plot_topology_history(
     ax=None
 ):
     """
-    Topologische Ladung Q als Funktion der Trajektorie.
+    Topological charge Q as function of trajectory.
 
     beta=None:
-        alle beta-Werte
+        all beta values
 
-    beta=<Wert>:
-        nur ein beta-Wert
+    beta=<value>:
+        just one beta value
     """
 
     if ax is None:
