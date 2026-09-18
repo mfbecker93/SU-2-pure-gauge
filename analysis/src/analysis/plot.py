@@ -4,7 +4,7 @@ from matplotlib.lines import Line2D
 
 
 # ============================================================
-# Allgemeine Hilfsfunktion
+# Auxilliary functions
 # ============================================================
 
 def savefig(fig, filename, dpi=300):
@@ -22,8 +22,8 @@ def savefig(fig, filename, dpi=300):
 # ============================================================
 # PLAQUETTE
 # ============================================================
-
-def plot_plaquette_history(df, title=None, ax=None):
+#TODO: add option to plot only one beta value
+def plot_plaquette_history(df, title=None, ax=None): 
     """
     Plaquette as function of trajectory for all beta values.
     """
@@ -135,7 +135,7 @@ def plot_plaquette_average(
 
     dx = 0.01
 
-    # Naiver Fehler
+    # naive error
     ax.errorbar(
         df["beta"] - dx,
         df["mean"],
@@ -145,7 +145,7 @@ def plot_plaquette_average(
         label="Naiver Fehler"
     )
 
-    # Autokorrelations-korrigierter Fehler
+    # error corrected for autocorrelation
     ax.errorbar(
         df["beta"] + dx,
         df["mean"],
@@ -173,7 +173,7 @@ def plot_plaquette_average(
 
 
 # ============================================================
-# AUTOKORRELATION1
+# AUTOCORRELATION
 # ============================================================
 
 def plot_autocorr(
@@ -409,7 +409,19 @@ def plot_int_autocorr_scan(
     )
 
     ax.grid(True, alpha=0.3)
-    ax.legend()
+
+    # Dummy handle for error band in legend
+    uncertainty_patch = Patch(
+    alpha=0.2,
+    label=r"statistical uncertainty"
+    )
+
+    handles, labels = ax.get_legend_handles_labels()
+
+    ax.legend(
+    handles + [uncertainty_patch],
+    labels + [r"statistical uncertainty"]
+    )
 
     if title is not None:
         ax.set_title(title)

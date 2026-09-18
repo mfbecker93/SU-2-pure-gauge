@@ -1,0 +1,394 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-09-18 15:52:24
+  Workflow ID: 333c9342-1e61-4446-b2b6-ffa5a773e3c5
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Host: S44-Y2X7765H
+  User: s3002149
+  Snakemake version: 9.26.1
+  Python version: 3.13.14 (main, Jul 23 2026, 14:48:16) [Clang 22.1.3 ]
+  Command: /Users/s3002149/PhD/projects/SU-2-pure-gauge/analysis/.venv/bin/snakemake --cores 1
+  Snakefile: /Users/s3002149/PhD/projects/SU-2-pure-gauge/Snakefile
+  Base directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Run directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Working directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Config file(s): ['analysis/config/config.yaml']
+  Config MD5: 9862e211610871f264ca58b3aec056bc
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+parse_log         25
+merge_logs         1
+select_scan        1
+all                1
+total             28
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 15:52:24 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md20_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj100_ckpt5.csv
+    jobid: 20
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md20_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:28 2026]
+Finished jobid: 20 (Rule: parse_log)
+1 of 28 steps (4%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:28 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj1000_ckpt5.csv
+    jobid: 5
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:29 2026]
+Finished jobid: 5 (Rule: parse_log)
+2 of 28 steps (7%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:29 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md8_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj100_ckpt5.csv
+    jobid: 14
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md8_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:29 2026]
+Finished jobid: 14 (Rule: parse_log)
+3 of 28 steps (11%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:29 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md8_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj1000_ckpt5.csv
+    jobid: 21
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md8_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:30 2026]
+Finished jobid: 21 (Rule: parse_log)
+4 of 28 steps (14%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:30 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md40_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md40_trajL1.0_traj100_ckpt5.csv
+    jobid: 11
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md40_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:30 2026]
+Finished jobid: 11 (Rule: parse_log)
+5 of 28 steps (18%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:31 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta6_md10_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj100_ckpt5.csv
+    jobid: 15
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta6_md10_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:31 2026]
+Finished jobid: 15 (Rule: parse_log)
+6 of 28 steps (21%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:31 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta8_md10_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj100_ckpt5.csv
+    jobid: 22
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta8_md10_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:32 2026]
+Finished jobid: 22 (Rule: parse_log)
+7 of 28 steps (25%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:32 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta8_md10_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj1000_ckpt5.csv
+    jobid: 19
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta8_md10_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:32 2026]
+Finished jobid: 19 (Rule: parse_log)
+8 of 28 steps (29%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:32 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL1.25_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj100_ckpt5.csv
+    jobid: 26
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL1.25_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:33 2026]
+Finished jobid: 26 (Rule: parse_log)
+9 of 28 steps (32%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:33 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL1.25_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj1000_ckpt5.csv
+    jobid: 2
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL1.25_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:34 2026]
+Finished jobid: 2 (Rule: parse_log)
+10 of 28 steps (36%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:34 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta4_md10_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj1000_ckpt5.csv
+    jobid: 16
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta4_md10_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:35 2026]
+Finished jobid: 16 (Rule: parse_log)
+11 of 28 steps (39%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:35 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta5.6_md20_trajL1.0_traj20_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta5.6_md20_trajL1.0_traj20_ckpt5.csv
+    jobid: 23
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta5.6_md20_trajL1.0_traj20_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:35 2026]
+Finished jobid: 23 (Rule: parse_log)
+12 of 28 steps (43%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:35 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md5_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj100_ckpt5.csv
+    jobid: 3
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md5_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:36 2026]
+Finished jobid: 3 (Rule: parse_log)
+13 of 28 steps (46%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:36 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L12x12x12x12_beta5.6_md20_trajL1.0_traj2_ckpt5.log
+    output: results/parsed/L12x12x12x12_beta5.6_md20_trajL1.0_traj2_ckpt5.csv
+    jobid: 17
+    reason: Code has changed since last execution
+    wildcards: logname=L12x12x12x12_beta5.6_md20_trajL1.0_traj2_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:36 2026]
+Finished jobid: 17 (Rule: parse_log)
+14 of 28 steps (50%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:36 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta10_md10_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj100_ckpt5.csv
+    jobid: 24
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta10_md10_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:37 2026]
+Finished jobid: 24 (Rule: parse_log)
+15 of 28 steps (54%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:37 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj100_ckpt5.csv
+    jobid: 7
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:37 2026]
+Finished jobid: 7 (Rule: parse_log)
+16 of 28 steps (57%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:38 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta6_md10_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj1000_ckpt5.csv
+    jobid: 12
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta6_md10_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:38 2026]
+Finished jobid: 12 (Rule: parse_log)
+17 of 28 steps (61%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:38 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL0.5_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj100_ckpt5.csv
+    jobid: 8
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL0.5_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:39 2026]
+Finished jobid: 8 (Rule: parse_log)
+18 of 28 steps (64%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:39 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL2_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL2_traj100_ckpt5.csv
+    jobid: 6
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL2_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:39 2026]
+Finished jobid: 6 (Rule: parse_log)
+19 of 28 steps (68%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:39 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md20_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj1000_ckpt5.csv
+    jobid: 13
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md20_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:40 2026]
+Finished jobid: 13 (Rule: parse_log)
+20 of 28 steps (71%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:40 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md5_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj1000_ckpt5.csv
+    jobid: 9
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md5_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:41 2026]
+Finished jobid: 9 (Rule: parse_log)
+21 of 28 steps (75%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:41 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL2_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL2_traj1000_ckpt5.csv
+    jobid: 18
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL2_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:42 2026]
+Finished jobid: 18 (Rule: parse_log)
+22 of 28 steps (79%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:42 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta10_md10_trajL1.0_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj1000_ckpt5.csv
+    jobid: 25
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta10_md10_trajL1.0_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:42 2026]
+Finished jobid: 25 (Rule: parse_log)
+23 of 28 steps (82%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:42 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta4_md10_trajL1.0_traj100_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj100_ckpt5.csv
+    jobid: 4
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta4_md10_trajL1.0_traj100_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 15:52:43 2026]
+Finished jobid: 4 (Rule: parse_log)
+24 of 28 steps (86%) done
+Execute 1 jobs...
+[Fri Sep 18 15:52:43 2026]
+localrule parse_log:
+    input: /Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs/L8x8x8x8_beta2_md10_trajL0.5_traj1000_ckpt5.log
+    output: results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj1000_ckpt5.csv
+    jobid: 10
+    reason: Code has changed since last execution
+    wildcards: logname=L8x8x8x8_beta2_md10_trajL0.5_traj1000_ckpt5
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 15:52:44 2026]
+Finished jobid: 10 (Rule: parse_log)
+25 of 28 steps (89%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 15:52:44 2026]
+localrule merge_logs:
+    input: results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL2_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md40_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L12x12x12x12_beta5.6_md20_trajL1.0_traj2_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL2_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta5.6_md20_trajL1.0_traj20_ckpt5.csv, results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj100_ckpt5.csv
+    output: results/parsed_combined/combined.csv
+    jobid: 1
+    reason: Input files updated by another job: results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj1000_ckpt5.csv, results/parsed/L12x12x12x12_beta5.6_md20_trajL1.0_traj2_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL2_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md40_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta5.6_md20_trajL1.0_traj20_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL2_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj100_ckpt5.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 15:52:44 2026]
+Finished jobid: 1 (Rule: merge_logs)
+26 of 28 steps (93%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 15:52:44 2026]
+localrule select_scan:
+    input: results/parsed_combined/combined.csv
+    output: results/scan/scan.csv
+    jobid: 27
+    reason: Input files updated by another job: results/parsed_combined/combined.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 15:52:45 2026]
+Finished jobid: 27 (Rule: select_scan)
+27 of 28 steps (96%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 15:52:45 2026]
+localrule all:
+    input: results/parsed_combined/combined.csv, results/scan/scan.csv
+    jobid: 0
+    reason: Input files updated by another job: results/parsed_combined/combined.csv, results/scan/scan.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 15:52:45 2026]
+Finished jobid: 0 (Rule: all)
+28 of 28 steps (100%) done
+Complete log(s): /Users/s3002149/PhD/projects/SU-2-pure-gauge/.snakemake/log/2026-09-18T155224.123439.snakemake.log
+Elapsed time: 0:00:20.994168

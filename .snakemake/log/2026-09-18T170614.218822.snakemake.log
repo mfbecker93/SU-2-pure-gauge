@@ -1,0 +1,94 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-09-18 17:06:14
+  Workflow ID: 83dbad24-8693-42c1-aa7f-c91c7b5799d2
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Host: S44-Y2X7765H
+  User: s3002149
+  Snakemake version: 9.26.1
+  Python version: 3.13.14 (main, Jul 23 2026, 14:48:16) [Clang 22.1.3 ]
+  Command: /Users/s3002149/PhD/projects/SU-2-pure-gauge/analysis/.venv/bin/snakemake --cores 1
+  Snakefile: /Users/s3002149/PhD/projects/SU-2-pure-gauge/Snakefile
+  Base directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Run directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Working directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Config file(s): ['analysis/config/config.yaml']
+  Config MD5: a23be3a70acc152b1fb28eb6593e982a
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                  count
+---------------------------------  -------
+select_scan                              1
+plot_plaquette_history                   1
+thermalised                              1
+plaquette_autocorr_jackknife             1
+plot_plaquette_autocorr_jackknife        1
+all                                      1
+total                                    6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 17:06:14 2026]
+localrule select_scan:
+    input: results/parsed_combined/combined.csv
+    output: results/scan/scan.csv
+    jobid: 27
+    reason: Missing output files: results/scan/scan.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 17:06:15 2026]
+Finished jobid: 27 (Rule: select_scan)
+1 of 6 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 17:06:15 2026]
+localrule plot_plaquette_history:
+    input: results/scan/scan.csv
+    output: results/scan/plaquette_history.png
+    jobid: 28
+    reason: Input files updated by another job: results/scan/scan.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+Select jobs to execute...
+[Fri Sep 18 17:06:16 2026]
+Finished jobid: 28 (Rule: plot_plaquette_history)
+2 of 6 steps (33%) done
+Execute 1 jobs...
+[Fri Sep 18 17:06:16 2026]
+localrule thermalised:
+    input: results/scan/scan.csv
+    output: results/scan/scan_thermalised.csv
+    jobid: 29
+    reason: Missing output files: results/scan/scan_thermalised.csv; Input files updated by another job: results/scan/scan.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 17:06:16 2026]
+Finished jobid: 29 (Rule: thermalised)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 17:06:16 2026]
+localrule plaquette_autocorr_jackknife:
+    input: results/scan/scan_thermalised.csv
+    output: results/scan/plaquette_autocorr_jackknife.csv
+    jobid: 30
+    reason: Missing output files: results/scan/plaquette_autocorr_jackknife.csv; Input files updated by another job: results/scan/scan_thermalised.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+RuleException:
+CalledProcessError in file "/Users/s3002149/PhD/projects/SU-2-pure-gauge/Snakefile", line 64:
+Command 'set -euo pipefail;  /Users/s3002149/PhD/projects/SU-2-pure-gauge/analysis/.venv/bin/python3 /Users/s3002149/PhD/projects/SU-2-pure-gauge/.snakemake/scripts/tmpx6a1j1e_.plaquette_autocorr_jackknife.py' returned non-zero exit status 1.
+[Fri Sep 18 17:06:17 2026]
+Error in rule plaquette_autocorr_jackknife:
+    message: None
+    jobid: 30
+    input: results/scan/scan_thermalised.csv
+    output: results/scan/plaquette_autocorr_jackknife.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error messages
+Complete log(s): /Users/s3002149/PhD/projects/SU-2-pure-gauge/.snakemake/log/2026-09-18T170614.218822.snakemake.log
+Elapsed time: 0:00:03.272896
+WorkflowError:
+At least one job did not complete successfully.

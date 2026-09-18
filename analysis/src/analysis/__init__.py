@@ -21,4 +21,9 @@ from .stats import (
     wopt_ulli,
     window_function,
 )
-from .plot import savefig  # add other plot_* functions you want at top level
+from .plot import(
+    savefig,
+    plot_plaquette_history,
+    plot_autocorr_scan,
+    plot_int_autocorr_scan 
+)

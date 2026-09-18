@@ -1,0 +1,55 @@
+Assuming unrestricted shared filesystem usage.
+
+SNAKEMAKE
+=========
+  Date: 2026-09-18 14:56:54
+  Workflow ID: ccedc1dd-0571-4721-983c-af4c6cb67beb
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Host: S44-Y2X7765H
+  User: s3002149
+  Snakemake version: 9.26.1
+  Python version: 3.13.14 (main, Jul 23 2026, 14:48:16) [Clang 22.1.3 ]
+  Command: /Users/s3002149/PhD/projects/SU-2-pure-gauge/analysis/.venv/bin/snakemake --cores 1
+  Snakefile: /Users/s3002149/PhD/projects/SU-2-pure-gauge/Snakefile
+  Base directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Run directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Working directory: /Users/s3002149/PhD/projects/SU-2-pure-gauge
+  Config file(s): ['analysis/config/config.yaml']
+  Config MD5: 9862e211610871f264ca58b3aec056bc
+
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job           count
+----------  -------
+merge_logs        1
+all               1
+total             2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 14:56:54 2026]
+localrule merge_logs:
+    input: results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL2_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md5_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL0.5_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md40_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta6_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta4_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L12x12x12x12_beta5.6_md20_trajL1.0_traj2_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL2_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md20_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md8_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta8_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta5.6_md20_trajL1.0_traj20_ckpt5.csv, results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj100_ckpt5.csv, results/parsed/L8x8x8x8_beta10_md10_trajL1.0_traj1000_ckpt5.csv, results/parsed/L8x8x8x8_beta2_md10_trajL1.25_traj100_ckpt5.csv
+    output: results/parsed_combined/combined.csv
+    jobid: 1
+    reason: Missing output files: results/parsed_combined/combined.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 14:56:55 2026]
+Finished jobid: 1 (Rule: merge_logs)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Sep 18 14:56:55 2026]
+localrule all:
+    input: results/parsed_combined/combined.csv
+    jobid: 0
+    reason: Input files updated by another job: results/parsed_combined/combined.csv
+    resources: tmpdir=/var/folders/gn/0cpq6tpx3mb7dr15cprkp6s00000gn/T
+[Fri Sep 18 14:56:55 2026]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /Users/s3002149/PhD/projects/SU-2-pure-gauge/.snakemake/log/2026-09-18T145654.564867.snakemake.log
+Elapsed time: 0:00:00.924353

@@ -1,10 +1,11 @@
 # analysis/config/config.yaml
-log_dir: "/Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs"
+log_dir: "/Users/s3002149/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Daten SU(2) Pure Gauge/raw_data/logs" # TODO: generalise or add comment that this has to be changed to the path of the user
 lattice: "8x8x8x8"
+trajectories: 1000
 mdsteps: 10
 trajL: 1.0
 betas: [2.0, 4.0, 6.0, 8.0, 10.0]
-trajectory_cut: 200
-Wmax: 100
-S: 4.0
+trajectory_cut: 100
+Wmax: 30
+S: 1
 n_blocks: 10
