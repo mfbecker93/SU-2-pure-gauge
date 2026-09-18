@@ -8,20 +8,20 @@ LOG_NAMES = [Path(f).stem for f in LOG_FILES]
 
 rule all:
     input:
-        "results/combined.parquet"
+        "results/combined.csv"
 
 rule parse_log:
     input:
         log = f"{config['log_dir']}/{{logname}}.log"
     output:
-        parquet = "results/parsed/{logname}.parquet"
+        csv = "results/parsed/{logname}.csv"
     script:
         "analysis/scripts/parse_log.py"
 
 rule merge_logs:
     input:
-        expand("results/parsed/{logname}.parquet", logname=LOG_NAMES)
+        expand("results/parsed/{logname}.csv", logname=LOG_NAMES)
     output:
-        "results/combined.parquet"
+        "results/combined.csv"
     script:
         "analysis/scripts/merge_logs.py"
